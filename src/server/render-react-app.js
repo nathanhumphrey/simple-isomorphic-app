@@ -4,12 +4,17 @@ import App from '../app/App';
 
 export default ctx => {
   const renderComponent = (
-    <body>
-      <div id="app">
-        <App />
-      </div>
-      <script src="index.js" />
-    </body>
+    <html>
+      <head>
+        <title>Isomorphic React App</title>
+        <script src="index.js" defer />
+      </head>
+      <body>
+        <div id="app">
+          <App />
+        </div>
+      </body>
+    </html>
   );
 
   ctx.body = renderToString(renderComponent);
