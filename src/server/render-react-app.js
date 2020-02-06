@@ -1,6 +1,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 import App from '../app/App';
+
+const staticContext = {}; // used to store info about the render
 
 export default ctx => {
   const renderComponent = (
@@ -11,7 +14,9 @@ export default ctx => {
       </head>
       <body>
         <div id="app">
-          <App />
+          <StaticRouter location={ctx.path} context={staticContext}>
+            <App />
+          </StaticRouter>
         </div>
       </body>
     </html>

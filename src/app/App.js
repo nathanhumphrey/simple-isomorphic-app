@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { pages } from './pages/';
+import { routes } from './routes';
 
 const App = () => {
-  
-  const [clicks, setClicks] = useState(0);
-
   return (
-    <div>
-      <h1>React Clicker Application</h1>
-      <button onClick={e => setClicks(clicks + 1)}>Clicked {clicks} times</button>
-    </div>
+    <Switch>
+      {routes
+        .filter(route => route.page)
+        .map(route => (
+          <Route exact={route.exact} key={route.page} path={route.path}>
+            {pages[route.page]}
+          </Route>
+        ))}
+    </Switch>
   );
-}
+};
 
 export default App;
