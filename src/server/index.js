@@ -14,7 +14,7 @@ const compiler = webpack(config);
 koaWebpack({ compiler }).then(middleware => {
   // use the koa middleware
   app.use(middleware);
-  // use renderReactApp middleware (not yet implemented)
+  // use renderReactApp middleware
   app.use(renderReactApp);
 });
 
