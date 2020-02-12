@@ -4,19 +4,25 @@ export const routes = [
     method: 'get',
     name: 'home',
     page: 'HomePage',
-    exact: true
+    exact: true,
+    navigation: true,
+    linkText: 'Home'
   },
   {
     path: '/signup',
     method: 'get',
     name: 'signup',
-    page: 'SignUpPage'
+    page: 'SignUpPage',
+    navigation: true,
+    linkText: 'Sign Up'
   },
   {
     path: '/users/:id',
     method: 'get',
     name: 'userdetails',
-    page: 'UserPage'
+    page: 'UserPage',
+    navigation: true,
+    linkText: 'Account'
   },
   {
     path: '*',
