@@ -1,0 +1,17 @@
+.sign-in-form {
+  display: flex;
+}
+
+.sign-in-form > * {
+  margin-left: 1rem;
+}
+
+.sign-in-form__email,
+.sign-in-form__password {
+  width: 7rem;
+  display: block;
+}
+
+.sign-in-form__submit {
+  margin-top: 1.1rem;
+}

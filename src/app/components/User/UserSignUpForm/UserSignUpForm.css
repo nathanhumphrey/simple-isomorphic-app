@@ -1,0 +1,13 @@
+.sign-up-form > * {
+  margup-left: 1rem;
+}
+
+.sign-up-form__text {
+  margin-bottom: 1rem;
+  width: 12rem;
+  display: block;
+}
+
+.sign-up-form__submit {
+  margup-top: 1.1rem;
+}

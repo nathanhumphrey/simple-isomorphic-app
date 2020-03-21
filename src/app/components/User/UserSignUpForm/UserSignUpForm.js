@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './UserSignUpForm.css';
 
 const UserSignUpForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -8,10 +9,11 @@ const UserSignUpForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <form>
+    <form className="sign-up-form">
       <div>
         <label>First name:</label>
         <input
+          className="sign-up-form__text"
           type="text"
           id="user-first-name"
           name="userFirstName"
@@ -22,6 +24,7 @@ const UserSignUpForm = () => {
       <div>
         <label>Last name:</label>
         <input
+          className="sign-up-form__text"
           type="text"
           id="user-last-name"
           name="userLastName"
@@ -32,6 +35,7 @@ const UserSignUpForm = () => {
       <div>
         <label>Email:</label>
         <input
+          className="sign-up-form__text"
           type="email"
           id="user-email"
           name="userEmail"
@@ -42,6 +46,7 @@ const UserSignUpForm = () => {
       <div>
         <label>Password:</label>
         <input
+          className="sign-up-form__text"
           type="password"
           id="user-password"
           name="userPassword"
@@ -52,6 +57,7 @@ const UserSignUpForm = () => {
       <div>
         <label>Confirm password:</label>
         <input
+          className="sign-up-form__text"
           type="password"
           id="confirm-password"
           name="confirmPassword"
@@ -60,7 +66,9 @@ const UserSignUpForm = () => {
         />
       </div>
       <div>
-        <button type="submit">Sign Up</button>
+        <button className="sign-up-form__submit" type="submit">
+          Sign Up
+        </button>
       </div>
     </form>
   );

@@ -1,0 +1,23 @@
+.page-nav {
+  height: 4rem;
+}
+
+.page-nav__menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-nav__menu-item {
+  padding: 0 1rem;
+  line-height: 4rem;
+}
+
+.page-nav__menu-link {
+  text-decoration: none;
+}
+
+.page-nav__menu-link:hover {
+  text-decoration: underline;
+}

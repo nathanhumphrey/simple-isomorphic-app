@@ -17,7 +17,7 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon index.js"
+    "serve": "nodemon --require ignore-styles index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.8.3",
@@ -28,6 +28,7 @@
     "babel-loader": "^8.0.6",
     "koa": "^2.11.0",
     "koa-router": "^8.0.7",
+    "koa-static": "^5.0.0",
     "koa-webpack": "^5.2.4",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -37,6 +38,10 @@
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "css-loader": "^3.4.2",
+    "ignore-styles": "^5.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.2",
+    "style-loader": "^1.1.3"
   }
 }
