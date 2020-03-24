@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
-This simple project is a proof of concept for building an isomorphic application with JavaScript. There is an accompanying [write-up](https://nathanhumphrey.ca/posts/2020-01-17-custom-isomorphic-app-with-javascript/) that walks through the development of this project and explains a little about why I put it together.
+This simple project is a proof of concept for building an isomorphic application with JavaScript. There is an accompanying [write-up](https://nathanhumphrey.ca/posts/2020-01-17-isomorphic-javascript-app/) that walks through the development of this project and explains a little about why I put it together.
 
 ## License
 
