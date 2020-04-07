@@ -6,4 +6,4 @@ This simple project is a proof of concept for building an isomorphic application
 
 ## License
 
-This respository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This repository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

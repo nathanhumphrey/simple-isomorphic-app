@@ -33,10 +33,10 @@ export default (sequelize, DataTypes) => {
    * user object, but rather the class as a whole.
    * e.g. User.generatePasswordHash('password1234')
    * @param {string} password a supplied plain text password
-   * @returns {string} a bcrypt hash value
+   * @returns {Promise} a promise that will resolve a bcrypt hash value
    */
   User.generatePasswordHash = password => {
-    return bcrypt.hashSync(password, 10);
+    return bcrypt.hash(password, 10);
   };
 
   /**
@@ -48,13 +48,15 @@ export default (sequelize, DataTypes) => {
    * @returns {User | null} the authenticated user or null
    */
   User.authenticate = (email, password) => {
+    // bcrypt is a one-way hashing algorithm that allows us to
+    // store strings on the database rather than the raw
+    // passwords. Check out the docs for more detail
     return User.findOne({ where: { email } })
       .then(user => {
-        // bcrypt is a one-way hashing algorithm that allows us to
-        // store strings on the database rather than the raw
-        // passwords. Check out the docs for more detail
-        if (user && bcrypt.compareSync(password, user.passwordHash)) {
-          return user;
+        if (user) {
+          return bcrypt
+            .compare(password, user.passwordHash)
+            .then(result => (result ? user : null));
         }
 
         return null;

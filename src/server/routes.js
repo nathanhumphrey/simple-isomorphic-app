@@ -26,7 +26,9 @@ export const routes = [
           // create a new user with the password hash from bcrypt
           const user = await User.create(
             Object.assign(ctx.request.body, {
-              passwordHash: User.generatePasswordHash(ctx.request.body.password)
+              passwordHash: await User.generatePasswordHash(
+                ctx.request.body.password
+              )
             })
           );
 
