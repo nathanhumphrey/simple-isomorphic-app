@@ -1,6 +1,8 @@
+import path from 'path'; // for defining static asset path
 import Koa from 'koa'; // base server
 import koaWebpack from 'koa-webpack'; // useful for development
 import webpack from 'webpack'; // to bundle in development
+import koaStatic from 'koa-static'; // serves static assets
 import config from '../../webpack.config'; // explicit import of webpack config
 import renderReactApp from './render-react-app'; // performs the SSR
 import Router from 'koa-router'; // server-side routing
@@ -25,7 +27,10 @@ koaWebpack({ compiler }).then(middleware => {
   // use the koa middleware
   app.use(middleware);
   // removed the renderReactApp middleware, use router going forward
-  app.use(router.routes()).use(router.allowedMethods());
+  app
+    .use(router.routes())
+    .use(router.allowedMethods())
+    .use(koaStatic(path.join(__dirname, '../../static')));
 });
 
 // just listen on port 3000, for now

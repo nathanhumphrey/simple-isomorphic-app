@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import './UserSigninForm.css';
 
 const UserSignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <form>
+    <form className="sign-in-form">
       <div>
         <label>Email:</label>
         <input
+          className="sign-in-form__email"
           type="email"
           id="user-email"
           name="userEmail"
@@ -19,6 +21,7 @@ const UserSignInForm = () => {
       <div>
         <label>Password:</label>
         <input
+          className="sign-in-form__password"
           type="password"
           id="user-password"
           name="userPassword"
@@ -26,7 +29,7 @@ const UserSignInForm = () => {
           onChange={event => setPassword(event.target.value)}
         />
       </div>
-      <div>
+      <div className="sign-in-form__submit">
         <button type="submit">Sign In</button>
       </div>
     </form>

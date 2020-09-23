@@ -11,6 +11,7 @@ export default ctx => {
       <head>
         <title>Isomorphic React App</title>
         <script src="index.js" defer />
+        <link rel="stylesheet" href="main.css" />
       </head>
       <body>
         <div id="app">
