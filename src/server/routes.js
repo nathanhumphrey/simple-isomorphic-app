@@ -19,16 +19,16 @@ export const routes = [
     path: '/signup',
     method: 'post',
     middleware: [
-      async ctx => {
+      async (ctx) => {
         // TODO: validate incoming fields
-        // TODO: then, check that the user doesn't already exist
+        // TODO: then, check that the user doesn't already exist - currently throws error
         try {
           // create a new user with the password hash from bcrypt
           const user = await User.create(
             Object.assign(ctx.request.body, {
               passwordHash: await User.generatePasswordHash(
                 ctx.request.body.password
-              )
+              ),
             })
           );
 
@@ -41,29 +41,29 @@ export const routes = [
           ctx.status = 400;
           ctx.body = `Could not create new user: ${err}`;
         }
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/signin',
     method: 'post',
     middleware: [
       passport.authenticate('local'),
-      async ctx => {
+      async (ctx) => {
         // only send back relevant details
         const { id, firstName, lastName, email } = ctx.state.user;
         ctx.status = 200; // ok
         ctx.type = 'application/json';
         ctx.body = JSON.stringify({ user: { id, firstName, lastName, email } });
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/users/:id',
     method: 'get',
     middleware: [
       requireAuth,
-      async ctx => {
+      async (ctx) => {
         // match the request to the currently authenticated user
         if (ctx.params.id === ctx.state.user.id) {
           // find the user in the database
@@ -73,29 +73,29 @@ export const routes = [
             lastName,
             email,
             createdAt,
-            updatedAt
+            updatedAt,
           } = await User.findOne({ where: { id: ctx.params.id } });
 
           ctx.status = 200; // ok
           ctx.type = 'application/json';
           ctx.body = JSON.stringify({
-            user: { id, firstName, lastName, email, createdAt, updatedAt }
+            user: { id, firstName, lastName, email, createdAt, updatedAt },
           });
         } else {
           ctx.status = 404;
-          ctx.body = 'Not found';
+          ctx.body = { error: 'Not found' };
         }
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/signout',
     method: 'get',
     middleware: [
-      async ctx => {
+      async (ctx) => {
         ctx.logout();
         ctx.status = 204; // success, no content
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];

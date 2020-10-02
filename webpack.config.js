@@ -6,12 +6,12 @@ module.exports = {
   target: 'web',
   entry: ['./src/client/index.js'],
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   output: {
     path: path.resolve(__dirname, 'static'),
     publicPath: '/',
-    filename: 'index.js'
+    filename: 'index.js',
   },
   module: {
     rules: [
@@ -21,19 +21,20 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+            plugins: ['@babel/plugin-transform-runtime'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.css$/, // match pure CSS files
         use: [
           // removed style-loader for mini-css-extract-plugin
           MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
-    ]
+          'css-loader',
+        ],
+      },
+    ],
   },
-  plugins: [new MiniCssExtractPlugin({ filename: 'main.css' })]
+  plugins: [new MiniCssExtractPlugin({ filename: 'main.css' })],
 };
